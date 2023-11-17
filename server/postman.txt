@@ -1,0 +1,14 @@
+http://localhost:5000/api/auth/register
+{
+  "firstName":"Антонов",
+   "lastName":"Вася",
+   "middleName":"Николаевич",
+   "birthday":"13-10-2003",
+   "phone":"+79312726732",
+   "address":"Улица Пушкина 7",
+   "email": "vasya@mail.ru",
+   "password": "vasya"
+
+   
+}
+
