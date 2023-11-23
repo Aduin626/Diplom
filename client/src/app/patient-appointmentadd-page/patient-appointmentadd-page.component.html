@@ -1,0 +1,13 @@
+<div class="page">
+    <app-patient-dashboaed-sidebar></app-patient-dashboaed-sidebar>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <app-doctor-dropdown></app-doctor-dropdown>
+      </div>
+      <div class="description">
+        <label for="problem">Опишите вашу проблему:</label>
+        <textarea id="problem" [(ngModel)]="problemDescription" name="problem"></textarea>
+      </div>
+      <button type="submit">Записаться на прием</button>
+    </form>
+  </div>

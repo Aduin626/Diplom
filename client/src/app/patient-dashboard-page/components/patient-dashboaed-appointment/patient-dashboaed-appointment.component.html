@@ -1,0 +1,17 @@
+<div class="appointments-container">
+  <h2>Мои приемы</h2>
+  <ul class="appointments-list">
+    <li *ngFor="let appointment of appointments" class="appointment-item">
+      <div class="appointment-details">
+        <p><strong>Дата приёма:</strong> {{ appointment.date | date: 'dd.MM.yyyy' }}</p>
+        <p><strong>Время приёма:</strong> {{ appointment.start_time | customTime }}</p>
+        <p><strong>ФИО врача:</strong> {{ appointment.doctor_name }}</p>
+        <p><strong>Специальность врача:</strong> {{ appointment.specialty }}</p>
+        <p><strong>Описание проблемы:</strong> {{ appointment.problem_description }}</p>
+      </div>
+        <button (click)="deleteAppointment(appointment.appoint_id.toString())" class="delete-appointment-btn">
+          Удалить запись
+        </button>
+    </li>
+  </ul>
+</div>

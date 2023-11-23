@@ -1,0 +1,10 @@
+Backend 
+
+http://localhost:5000/api/auth/login
+http://localhost:5000/api/patient
+
+
+Frontend
+
+/api/auth/login
+/api/patient

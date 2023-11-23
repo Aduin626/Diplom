@@ -29,7 +29,7 @@ class Controller {
           .json({ error: "Расписание для данного врача не найдено." });
       }
 
-      return res.status(200).json({ schedule: schedule.rows });
+      return res.status(200).json(  schedule.rows );
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -79,7 +79,7 @@ class Controller {
       const patientId = patientIdQueryResult.rows[0].patient_id;
 
       const userAppointments = await pool.query(
-        "SELECT app.appoint_id, app.problem_description, app.status, app.created_at, sch.start_time, sch.end_time,  doc.name AS doctor_name, doc.specialty FROM Appointments app JOIN Schedule sch ON app.schedule_id = sch.schedule_id JOIN Doctors doc ON sch.doctor_id = doc.doctor_id WHERE app.patient_id = $1 ORDER BY sch.start_time",
+        "SELECT app.appoint_id, app.problem_description, app.status, app.created_at, sch.start_time, sch.end_time, sch.date, doc.name AS doctor_name, doc.specialty FROM Appointments app JOIN Schedule sch ON app.schedule_id = sch.schedule_id JOIN Doctors doc ON sch.doctor_id = doc.doctor_id WHERE app.patient_id = $1 ORDER BY sch.start_time",
         [patientId]
       );
 
@@ -160,13 +160,8 @@ class Controller {
     }
   }
 
-
-
-
-
-  async getReceipt(req, res){
+  async getReceipt(req, res) {
     try {
-      
       const userId = req.user.user_id;
       const patientIdQueryResult = await pool.query(
         "SELECT patient_id FROM patients WHERE user_id =$1",
@@ -180,15 +175,13 @@ class Controller {
           r.issue_date,
           r.expiry_date,
           r.description,
-          w.name AS medication_name,
-          w.qr AS medication_qr,
-          pwi.quantity,
-          pwi.dosage
+          json_agg(json_build_object('name', w.name, 'qr', w.qr, 'quantity', pwi.quantity, 'dosage', pwi.dosage)) AS medications
         FROM Receipts r
         JOIN PrescriptionWarehouseItems pwi ON r.receipt_id = pwi.receipt_id
         JOIN Warehouse w ON pwi.item_id = w.item_id
         WHERE r.patient_id = $1
-        ORDER BY r.issue_date DESC, w.name;
+        GROUP BY r.receipt_id
+        ORDER BY r.issue_date DESC;
       `;
   
       const result = await pool.query(query, [patientId]);
@@ -196,27 +189,24 @@ class Controller {
         return res.status(404).json({ message: "Рецепты не найдены." });
       }
   
-      res.json(result.rows);
+      return res.status(200).json({ receipts: result.rows });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Ошибка сервера при получении рецептов." });
     }
   }
 
-
   async deleteReceipt(req, res) {
     try {
+      const receiptId = req.params.id;
 
-
-      const  receiptId = req.params.id;
-  
       const deleteQuery = "DELETE FROM Receipts WHERE receipt_id = $1;";
       const result = await pool.query(deleteQuery, [receiptId]);
-  
+
       if (result.rowCount === 0) {
         return res.status(404).json({ message: "Рецепт не найден." });
       }
-  
+
       res.status(200).json({ message: "Рецепт успешно удален." });
     } catch (error) {
       console.error(error);

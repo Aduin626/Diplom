@@ -1,0 +1,51 @@
+@import "/src/styles.scss";
+
+.appointments-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(239, 238, 238);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appointments-container h2 {
+    color: #333;
+    text-align: center;
+  }
+  
+  .appointments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .appointment-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .appointment-details p {
+    margin: 10px 0;
+    color: #666;
+  }
+  
+  .delete-appointment-btn {
+    background-color: $text-color;
+    color: white;
+    border: none;
+    margin-right:  50%;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .delete-appointment-btn:hover {
+    background-color: $hover-color;
+  }

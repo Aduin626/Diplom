@@ -1,0 +1,20 @@
+<div class="receipts-container">
+    <h2>Мои Рецепты</h2>
+    <ul class="receipts-list">
+      <li *ngFor="let receipt of receipts" class="receipt-item">
+        <p><strong>Дата выдачи:</strong> {{ receipt.issue_date | date: 'dd.MM.yyyy' }}</p>
+        <p><strong>Дата истечения:</strong> {{ receipt.expiry_date | date: 'dd.MM.yyyy' }}</p>
+        <p><strong>Описание:</strong> {{ receipt.description }}</p>
+        <div *ngIf="receipt.medications">
+          <h4>Препараты:</h4>
+          <ul>
+            <li *ngFor="let medication of receipt.medications">
+              <p><strong>Название:</strong> {{ medication.name }}</p>
+              <p><strong>Количество:</strong> {{ medication.quantity }}</p>
+              <p><strong>Дозировка:</strong> {{ medication.dosage }}</p>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>

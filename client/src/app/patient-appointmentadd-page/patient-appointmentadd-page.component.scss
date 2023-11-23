@@ -1,0 +1,51 @@
+@import "/src/styles.scss";
+
+.page{
+    display: flex;
+    justify-content: space-around;
+}
+  
+  form {
+    max-width: 600px;
+    width: 100%;
+    background-color: rgb(239, 238, 238);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  form div.description {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    min-height: 100px;
+  }
+  
+  button[type="submit"] {
+    background-color: $text-color;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: $hover-color;
+  }

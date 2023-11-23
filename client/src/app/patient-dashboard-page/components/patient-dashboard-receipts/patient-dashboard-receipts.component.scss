@@ -1,0 +1,50 @@
+.receipts-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9; // Светлый фон для контейнера
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif; // Пример шрифта
+  }
+  
+  .receipts-container h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px; // Дополнительный отступ снизу
+  }
+  
+  .receipts-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .receipt-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .receipt-details p, .medications p {
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  .medications h4 {
+    margin-top: 15px;
+    color: #333;
+  }
+  
+  .medications ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .medications li {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+  }

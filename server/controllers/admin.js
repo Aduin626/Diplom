@@ -204,7 +204,7 @@ class Controller {
     }
   }
 
-  //ужаление талона конкретного врача
+  //удаление талона конкретного врача
 
   async deleteSchedule(req, res) {
     try {

@@ -1,0 +1,14 @@
+<select [(ngModel)]="selectedDoctorId" (change)="onDoctorChange()">
+    <option *ngFor="let doctor of doctors" [ngValue]="doctor.doctor_id">{{ doctor.name +"-"+ doctor.specialty}}</option>
+  </select>
+  
+  <!-- После выбора врача, отобразите доступные талоны -->
+  <div *ngIf="schedules.length > 0">
+    <h3>Доступные талоны</h3>
+    <select [(ngModel)]="selectedScheduleId" (change)="onScheduleChange()">
+      <option *ngFor="let schedule of schedules" [ngValue]="schedule.schedule_id">
+        {{ schedule.date| date:'dd.MM.yyyy'}}: 
+        с {{ schedule.start_time | customTime }} до {{ schedule.end_time | customTime}}
+      </option>
+    </select>
+  </div>

@@ -1,0 +1,41 @@
+@import "/src/styles.scss";
+
+.select-container {
+  margin: 20px 0;
+  max-width: 600px;
+  width: 100%;
+}
+
+.select-container h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+select:focus {
+  border-color: $background-color; // Замените на ваш цвет акцента, если есть
+}
+
+option {
+  padding: 10px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Стили для кастомного фильтра времени
+.custom-time {
+  color: #666;
+}

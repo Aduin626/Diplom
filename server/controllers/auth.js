@@ -68,7 +68,7 @@ class Controller {
 
       const newPatient = await pool.query(
         "INSERT INTO Patients (user_id, name, birthday, phone, address,snils) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-        [newUserId, fullName, birthday, phone, address,snils]
+        [newUserId, fullName, birthday, phone, address, snils]
       );
 
       return res.json({ users: newUser.rows[0], patient: newPatient.rows[0] });
@@ -79,8 +79,6 @@ class Controller {
 }
 
 export default new Controller();
-
-
 
 // async registerPatient(req, res) {
 //   try {

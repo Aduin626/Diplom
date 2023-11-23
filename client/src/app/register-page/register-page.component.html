@@ -1,0 +1,145 @@
+<form class="card"  [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="card-content">
+    <span class="card-title">Создать аккаунт</span>
+    <div class="input-field">
+      <label for="email">Email:</label>
+      <input formControlName="email" id="email" type="email" required />
+      <span
+        *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Email не должен быть пустым.
+      </span>
+      <span
+        *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"
+        class="helper-text red-text"
+      >
+        Введите корректный email.
+      </span>
+    </div>
+    <div class="input-field">
+      <label for="password">Пароль:</label>
+      <input formControlName="password" id="password" type="password" />
+      <span
+        *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Пароль обязателен.
+      </span>
+      <span
+        *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']"
+        class="helper-text red-text"
+      >
+        Пароль должен быть не менее 4 символов.
+      </span>
+    </div>
+    <!-- Фамилия -->
+    <div class="input-field">
+      <label for="lastName">Ваша фамилия:</label>
+      <input formControlName="lastName" id="lastName" type="text" required />
+      <span
+        *ngIf="form.get('lastName')?.touched && form.get('lastName')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Фамилия обязательна.
+      </span>
+    </div>
+
+    <!-- Имя -->
+    <div class="input-field">
+      <label for="firstName">Ваше имя:</label>
+      <input formControlName="firstName" id="firstName" type="text" required />
+      <span
+        *ngIf="form.get('firstName')?.touched && form.get('firstName')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Имя обязательно.
+      </span>
+    </div>
+
+    <!-- Отчество -->
+    <div class="input-field">
+      <label for="middleName">Ваше отчество:</label>
+      <input
+        formControlName="middleName"
+        id="middleName"
+        type="text"
+        required
+      />
+      <span
+        *ngIf="form.get('middleName')?.touched && form.get('middleName')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Отчество обязательно.
+      </span>
+    </div>
+
+      <!-- Дата рождения -->
+      <div class="input-field">
+        <label for="birthday">Дата рождения:</label>
+        <input formControlName="birthday" id="birthday" type="date" required />
+        <span
+          *ngIf="form.get('birthday')?.touched && form.get('birthday')?.errors?.['required']"
+          class="helper-text red-text"
+        >
+          Дата рождения обязательна.
+        </span>
+      </div>
+
+    <!-- Телефон -->
+    <div class="input-field">
+      <label for="phone">Номер телефона:</label>
+      <input formControlName="phone" id="phone" type="tel" required />
+      <span
+        *ngIf="form.get('phone')?.touched && form.get('phone')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Номер телефона обязателен.
+      </span>
+    </div>
+
+  
+
+    <!-- Адрес -->
+    <div class="input-field">
+      <label for="address">Адрес:</label>
+      <input formControlName="address" id="address" type="text" required />
+      <span
+        *ngIf="form.get('address')?.touched && form.get('address')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        Адрес обязателен.
+      </span>
+    </div>
+
+    <!-- СНИЛС -->
+    <div class="input-field">
+      <label for="snils">СНИЛС:</label>
+      <input
+        formControlName="snils"
+        id="snils"
+        type="text"
+        required
+        pattern="\d{3}-\d{3}-\d{3} \d{2}"
+      />
+      <span
+        *ngIf="form.get('snils')?.touched && form.get('snils')?.errors?.['required']"
+        class="helper-text red-text"
+      >
+        СНИЛС обязателен.
+      </span>
+      <span
+        *ngIf="form.get('snils')?.touched && form.get('snils')?.errors?.['pattern']"
+        class="helper-text red-text"
+      >
+        Введите СНИЛС в формате XXX-XXX-XXX XX.
+      </span>
+    </div>
+  </div>
+
+  <div class="card-action">
+    <button class="modal-action btn waves-effect" [disabled]="form.invalid">
+      Создать
+    </button>
+  </div>
+</form>
