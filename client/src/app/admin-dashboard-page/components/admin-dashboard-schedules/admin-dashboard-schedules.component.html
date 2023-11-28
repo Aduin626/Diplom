@@ -1,0 +1,24 @@
+<div class="filter-container">
+    <label for="doctorSelect">Выберите врача:</label>
+    <select id="doctorSelect" [(ngModel)]="selectedDoctorId">
+        <option [ngValue]="null">Все врачи</option>
+        <option *ngFor="let doctor of doctors" [ngValue]="doctor.doctor_id">{{ doctor.name }}</option>
+      </select>
+  </div>
+
+<div class="schedules-container">
+    <h2>Список талонов</h2>
+    
+    <ul class="schedules-list">
+        <li *ngFor="let schedule of getFilteredSchedules()" [class.is-booked]="schedule.is_booked" [class.is-available]="!schedule.is_booked" class="schedule-item">
+            <div class="schedule-details">
+          <p><strong>Имя врача:</strong> {{ schedule.doctor_name }}</p>
+          <p><strong>Время начала:</strong> {{ schedule.start_time | customTime }}</p>
+          <p><strong>Время окончания:</strong> {{ schedule.end_time | customTime }}</p>
+          <p><strong>Статус:</strong> {{ schedule.is_booked ? 'Занято' : 'Свободно' }}</p>
+        </div>
+        <button (click)="deleteSchedule(schedule.schedule_id)" class="btn">Удалить</button>
+        <!-- Вы можете добавить еще кнопки или элементы управления здесь, если необходимо -->
+      </li>
+    </ul>
+  </div>

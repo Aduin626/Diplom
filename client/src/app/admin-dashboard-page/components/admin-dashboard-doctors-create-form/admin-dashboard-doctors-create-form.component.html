@@ -1,0 +1,69 @@
+<form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card-content">
+      <span class="card-title">Добавить Доктора</span>
+  
+      <!-- Имя -->
+      <div class="input-field">
+        <label for="firstName">Имя:</label>
+        <input formControlName="firstName" id="firstName" type="text" />
+        <span *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched" class="helper-text red-text">
+          Имя обязательно.
+        </span>
+      </div>
+  
+      <!-- Фамилия -->
+      <div class="input-field">
+        <label for="lastName">Фамилия:</label>
+        <input formControlName="lastName" id="lastName" type="text" />
+        <span *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched" class="helper-text red-text">
+          Фамилия обязательна.
+        </span>
+      </div>
+  
+      <!-- Отчество -->
+      <div class="input-field">
+        <label for="middleName">Отчество:</label>
+        <input formControlName="middleName" id="middleName" type="text" />
+        <span *ngIf="form.get('middleName')?.invalid && form.get('middleName')?.touched" class="helper-text red-text">
+            Отчество обязательна.
+          </span>
+      </div>
+  
+      <!-- Специальность -->
+      <div class="input-field">
+        <label for="specialty">Специальность:</label>
+        <input formControlName="specialty" id="specialty" type="text" />
+        <span *ngIf="form.get('specialty')?.invalid && form.get('specialty')?.touched" class="helper-text red-text">
+            Специальность обязательна.
+          </span>
+      </div>
+  
+      <!-- Email -->
+      <div class="input-field">
+        <label for="email">Email:</label>
+        <input formControlName="email" id="email" type="email" />
+        <span *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched" class="helper-text red-text">
+          Email не должен быть пустым.
+        </span>
+        <span *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched" class="helper-text red-text">
+          Введите корректный email.
+        </span>
+      </div>
+  
+      <!-- Пароль -->
+      <div class="input-field">
+        <label for="password">Пароль:</label>
+        <input formControlName="password" id="password" type="password" />
+        <span *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched" class="helper-text red-text">
+          Пароль обязателен.
+        </span>
+        <span *ngIf="form.get('password')?.errors?.['minlength'] && form.get('password')?.touched" class="helper-text red-text">
+          Пароль должен быть не менее 4 символов.
+        </span>
+      </div>
+    </div>
+  
+    <div class="card-action">
+      <button class="btn" [disabled]="form.invalid">Добавить</button>
+    </div>
+  </form>

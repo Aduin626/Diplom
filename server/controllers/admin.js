@@ -47,12 +47,37 @@ class Controller {
   //список врачей
   async getAllDoctors(req, res) {
     try {
-      const doctors = await pool.query("SELECT * FROM doctors");
+      const doctors = await pool.query(
+        "SELECT Doctors.doctor_id, Doctors.name, Doctors.specialty, Users.email FROM Doctors INNER JOIN Users ON Doctors.user_id = Users.user_id"
+      );
       res.json(doctors.rows);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   }
+
+  async getDoctorById(req, res) {
+    try {
+        const doctorId = req.params.id;
+
+        const query = `
+            SELECT Doctors.doctor_id, Doctors.name, Doctors.specialty, Users.email 
+            FROM Doctors 
+            INNER JOIN Users ON Doctors.user_id = Users.user_id 
+            WHERE Doctors.doctor_id = $1
+        `;
+
+        const result = await pool.query(query, [doctorId]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: "Врач не найден." });
+        }
+
+        res.json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
 
   //Удаление врача
   async deleteDoctor(req, res) {
@@ -78,9 +103,6 @@ class Controller {
       res
         .status(200)
         .json({ message: "Врач и связанный пользователь успешно удалены." });
-      res
-        .status(200)
-        .json({ message: "Врач и связанный пользователь успешно удалены." });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -90,49 +112,50 @@ class Controller {
   async updateDoctor(req, res) {
     try {
       const doctorId = req.params.id;
-      const { firstName, lastName, middleName, specialty, email, password } =
-        req.body;
-      const fullName = `${firstName} ${lastName} ${middleName}`;
-
+      const { firstName, lastName, middleName, specialty, email, password } = req.body;
+      const fullName = `${firstName} ${lastName} ${middleName}`; // Сконструировать полное имя
+  
+      // Находим пользователя, связанного с врачом
       const user = await pool.query(
-        "SELECT * FROM users WHERE email = $1 AND user_id = (SELECT user_id FROM doctors WHERE doctor_id = $2)",
-        [email, doctorId]
+        "SELECT * FROM users WHERE user_id = (SELECT user_id FROM doctors WHERE doctor_id = $1)",
+        [doctorId]
       );
-
+  
+      // Если пользователь не найден, возвращаем ошибку
       if (user.rows.length === 0) {
-        return res.status(404).json({ error: "Врач с таким email не найден." });
+        return res.status(404).json({ error: "Врач не найден." });
       }
-
+  
+      // Обновляем email пользователя, если он предоставлен
+      if (email) {
+        await pool.query(
+          "UPDATE users SET email = $1 WHERE user_id = $2",
+          [email, user.rows[0].user_id]
+        );
+      }
+  
+      // Обновляем пароль пользователя, если он предоставлен
       if (password) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         await pool.query(
-          "UPDATE users SET email = $1, password_hash = $2 WHERE user_id = $3",
-          [email, hashedPassword, user.rows[0].user_id]
+          "UPDATE users SET password_hash = $1 WHERE user_id = $2",
+          [hashedPassword, user.rows[0].user_id]
         );
-      } else {
-        await pool.query("UPDATE users SET email = $1 WHERE user_id = $2", [
-          email,
-          user.rows[0].user_id,
-        ]);
       }
-
+  
+      // Обновляем запись врача
       const updatedDoctor = await pool.query(
         "UPDATE doctors SET name = $1, specialty = $2 WHERE doctor_id = $3 RETURNING *",
         [fullName, specialty, doctorId]
       );
-
-      if (updatedDoctor.rows.length === 0) {
-        return res.status(404).json({ error: "Врач не найден." });
-      }
-
+  
       // Возвращаем обновленные данные
       return res.json({ user: user.rows[0], doctor: updatedDoctor.rows[0] });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   }
-
   //Талоны
 
   //создание талонов

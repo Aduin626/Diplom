@@ -1,0 +1,72 @@
+<form class="card" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="card-content">
+      <span class="card-title">Редактировать Доктора</span>
+    
+      <!-- ID Врача (скрытое поле) -->
+      <input formControlName="doctor_id" type="hidden" />
+  
+      <!-- Имя -->
+      <div class="input-field">
+        <label for="firstName">Имя:</label>
+        <input formControlName="firstName" id="firstName" type="text" />
+        <span *ngIf="editForm.get('firstName')?.invalid && editForm.get('firstName')?.touched" class="helper-text red-text">
+          Имя обязательно.
+        </span>
+      </div>
+    
+      <!-- Фамилия -->
+      <div class="input-field">
+        <label for="lastName">Фамилия:</label>
+        <input formControlName="lastName" id="lastName" type="text" />
+        <span *ngIf="editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched" class="helper-text red-text">
+          Фамилия обязательна.
+        </span>
+      </div>
+    
+      <!-- Отчество -->
+      <div class="input-field">
+        <label for="middleName">Отчество:</label>
+        <input formControlName="middleName" id="middleName" type="text" />
+        <span *ngIf="editForm.get('middleName')?.invalid && editForm.get('middleName')?.touched" class="helper-text red-text">
+          Отчество обязательно.
+        </span>
+      </div>
+    
+      <!-- Специальность -->
+      <div class="input-field">
+        <label for="specialty">Специальность:</label>
+        <input formControlName="specialty" id="specialty" type="text" />
+        <span *ngIf="editForm.get('specialty')?.invalid && editForm.get('specialty')?.touched" class="helper-text red-text">
+          Специальность обязательна.
+        </span>
+      </div>
+    
+      <!-- Email -->
+      <div class="input-field">
+        <label for="email">Email:</label>
+        <input formControlName="email" id="email" type="email" />
+        <span *ngIf="editForm.get('email')?.errors?.['required'] && editForm.get('email')?.touched" class="helper-text red-text">
+          Email не должен быть пустым.
+        </span>
+        <span *ngIf="editForm.get('email')?.errors?.['email'] && editForm.get('email')?.touched" class="helper-text red-text">
+          Введите корректный email.
+        </span>
+      </div>
+    
+      <!-- Пароль -->
+      <div class="input-field">
+        <label for="password">Пароль:</label>
+        <input formControlName="password" id="password" type="password" />
+        <span *ngIf="editForm.get('password')?.errors?.['required'] && editForm.get('password')?.touched" class="helper-text red-text">
+          Пароль обязателен.
+        </span>
+        <span *ngIf="editForm.get('password')?.errors?.['minlength'] && editForm.get('password')?.touched" class="helper-text red-text">
+          Пароль должен быть не менее 4 символов.
+        </span>
+      </div>
+    
+      <div class="card-action">
+        <button class="btn" type="submit" [disabled]="editForm.invalid">Сохранить изменения</button>
+      </div>
+    </div>
+  </form>

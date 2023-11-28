@@ -21,6 +21,15 @@ import { PatientAppointmentaddPageComponent } from './patient-appointmentadd-pag
 import { DoctorDropdownComponent } from './patient-appointmentadd-page/components/doctor-dropdown/doctor-dropdown.component';
 import { PatientReceiptsPageComponent } from './patient-receipts-page/patient-receipts-page.component';
 import { PatientDashboardReceiptsComponent } from './patient-dashboard-page/components/patient-dashboard-receipts/patient-dashboard-receipts.component';
+import { AdminDashboardSidebarComponent } from './admin-dashboard-page/components/admin-dashboard-sidebar/admin-dashboard-sidebar.component';
+import { AdminDashboardDoctorsComponent } from './admin-dashboard-page/components/admin-dashboard-doctors/admin-dashboard-doctors.component';
+import { AdminDoctorCreatePageComponent } from './admin-doctor-create-page/admin-doctor-create-page.component';
+import { AdminDashboardDoctorsCreateFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-create-form/admin-dashboard-doctors-create-form.component';
+import { AdminDashboardDoctorsEditFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-edit-form/admin-dashboard-doctors-edit-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminDashboardSchedulesComponent } from './admin-dashboard-page/components/admin-dashboard-schedules/admin-dashboard-schedules.component';
+import { AdminDoctorSchedulesPageComponent } from './admin-doctor-schedules-page/admin-doctor-schedules-page.component';
+import { AdminDashboardDoctorsCreateScheduleFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-create-schedule-form/admin-dashboard-doctors-create-schedule-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +47,15 @@ import { PatientDashboardReceiptsComponent } from './patient-dashboard-page/comp
     PatientAppointmentaddPageComponent,
     DoctorDropdownComponent,
     PatientReceiptsPageComponent,
-    PatientDashboardReceiptsComponent
+    PatientDashboardReceiptsComponent,
+    AdminDashboardSidebarComponent,
+    AdminDashboardDoctorsComponent,
+    AdminDoctorCreatePageComponent,
+    AdminDashboardDoctorsCreateFormComponent,
+    AdminDashboardDoctorsEditFormComponent,
+    AdminDashboardSchedulesComponent,
+    AdminDoctorSchedulesPageComponent,
+    AdminDashboardDoctorsCreateScheduleFormComponent
     
   ],
   imports: [
@@ -46,7 +63,8 @@ import { PatientDashboardReceiptsComponent } from './patient-dashboard-page/comp
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

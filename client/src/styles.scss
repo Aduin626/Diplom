@@ -5,3 +5,26 @@ $hover-color: #00442a; // Цвет текста при наведении
 $logo-font-size: 2rem; // Размер шрифта логотипа
 $link-font-size: 1rem; // Размер шрифта ссылок
 
+button {
+  background-color: $text-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+  background-color: $hover-color;
+}
+
+
+.page{
+    display: flex;
+    justify-content: space-around;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,35 @@
+@import "/src/styles.scss";
+
+
+.sidebar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: $text-color; /* Green background color */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    padding: 6px 8px 6px 16px; /* Padding inside the links */
+    text-decoration: none; /* No underline on links */
+    font-size: 18px; /* Increase the font size */
+    color: white; /* White text color */
+    display: block; /* Make the links appear below each other */
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: $hover-color; /* Add a blue color to the "active/current" link */
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover {
+    background-color: #aab5ac; /* Add a darker grey color on mouse-over */
+    color: white;
+  }

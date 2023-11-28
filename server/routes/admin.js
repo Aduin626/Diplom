@@ -9,6 +9,7 @@ router.post("/doctor-add", authenticateToken,checkAdminRole, Controller.addDocto
 router.get("/doctors", authenticateToken,checkAdminRole, Controller.getAllDoctors);
 router.delete("/doctor/:id", authenticateToken,checkAdminRole, Controller.deleteDoctor);
 router.put("/doctor/:id", authenticateToken, Controller.updateDoctor);
+router.get('/doctor/:id',authenticateToken, Controller.getDoctorById);
 
 
 router.post("/schedule-create",authenticateToken,checkAdminRole,Controller.createSchedule);

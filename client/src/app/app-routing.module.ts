@@ -10,6 +10,11 @@ import { DoctorDashboardPageComponent } from './doctor-dashboard-page/doctor-das
 import { AdminDashboardPageComponent } from './admin-dashboard-page/admin-dashboard-page.component';
 import { PatientAppointmentaddPageComponent } from './patient-appointmentadd-page/patient-appointmentadd-page.component';
 import { PatientReceiptsPageComponent } from './patient-receipts-page/patient-receipts-page.component';
+import { AdminDoctorCreatePageComponent } from './admin-doctor-create-page/admin-doctor-create-page.component';
+import { AdminDashboardDoctorsEditFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-edit-form/admin-dashboard-doctors-edit-form.component';
+import { AdminDashboardSchedulesComponent } from './admin-dashboard-page/components/admin-dashboard-schedules/admin-dashboard-schedules.component';
+import { AdminDoctorSchedulesPageComponent } from './admin-doctor-schedules-page/admin-doctor-schedules-page.component';
+import { AdminDashboardDoctorsCreateScheduleFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-create-schedule-form/admin-dashboard-doctors-create-schedule-form.component';
 
 const routes: Routes = [
   {
@@ -30,34 +35,59 @@ const routes: Routes = [
     path: 'patient-dashboard',
     component: PatientDashboardPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [1] }, 
-   
+    data: { roles: [1] },
   },
 
   {
-    path:'appointment-add',
-    component:PatientAppointmentaddPageComponent,
+    path: 'appointment-add',
+    component: PatientAppointmentaddPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [1] }, 
+    data: { roles: [1] },
   },
   {
-    path:'receipts',
-    component:PatientReceiptsPageComponent,
+    path: 'receipts',
+    component: PatientReceiptsPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [1] }, 
+    data: { roles: [1] },
   },
   {
     path: 'doctor-dashboard',
     component: DoctorDashboardPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [2] } // Только для врачей
+    data: { roles: [2] }, // Только для врачей
   },
   {
     path: 'admin-dashboard',
     component: AdminDashboardPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [3] } // Только для администраторов
+    data: { roles: [3] }, // Только для администраторов
   },
+
+  {
+    path: 'doctor-add',
+    component: AdminDoctorCreatePageComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [3] },
+  },
+  {
+    path: 'edit-doctor/:id',
+    component: AdminDashboardDoctorsEditFormComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [3] },
+  },
+  {
+    path: 'createschedule/:id',
+    component: AdminDashboardDoctorsCreateScheduleFormComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [3] },
+  },
+  {
+    path: 'schedules',
+    component: AdminDoctorSchedulesPageComponent,
+    canActivate:[AuthRoleGuard],
+    data:{roles:[3]},
+
+  }
 ];
 
 @NgModule({

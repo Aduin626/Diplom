@@ -48,11 +48,10 @@ export interface Schedule {
   schedule_id: number;
   doctor_id: number;
   date: Date;
-  start_time:string;
+  start_time: string;
   end_time: string;
   is_booked: boolean;
 }
-
 
 export interface Receipt {
   receipt_id: number;
@@ -65,6 +64,35 @@ export interface Receipt {
   dosage: string; // Дозировка лекарства
 }
 
+export interface Doctor {
+  doctor_id: number;
+  user_id: number;
+  name: string;
+  specialty: string;
+  email: string;
+}
+
+export interface DoctorForm {
+  doctor_id: number;
+  user_id: number;
+  name: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  specialty: string;
+  email: string;
+  password: string;
+}
 
 
+export interface TimeInterval {
+  start: string;
+  end: string;
+}
 
+export interface ScheduleData {
+  doctorId: number | null;
+  date: string;
+  startTimes: string[];
+  endTimes: string[];
+}

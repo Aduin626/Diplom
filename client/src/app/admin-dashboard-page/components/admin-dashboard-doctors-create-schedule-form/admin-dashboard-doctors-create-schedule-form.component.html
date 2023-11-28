@@ -1,0 +1,27 @@
+<div class="card">
+    <h3 class="card-title">Создание расписания  {{ doctorName }}</h3>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-field">
+        <label for="date">Дата</label>
+        <input type="date" id="date" [(ngModel)]="scheduleData.date" name="date" required>
+      </div>
+  
+      <div *ngFor="let interval of scheduleData.startTimes; let i = index" class="time-interval">
+        <div class="input-field">
+          <label for="startTime{{i}}">Время начала</label>
+          <input type="time" id="startTime{{i}}" [(ngModel)]="scheduleData.startTimes[i]" name="startTimes{{i}}" required>
+        </div>
+  
+        <div class="input-field">
+          <label for="endTime{{i}}">Время окончания</label>
+          <input type="time" id="endTime{{i}}" [(ngModel)]="scheduleData.endTimes[i]" name="endTimes{{i}}" required>
+        </div>
+      </div>
+  
+      <div class="card-action">
+        <button type="button" class="btn btn-secondary" (click)="addTimeInterval()">Добавить интервал времени</button>
+        <button type="submit" class="btn btn-primary">Создать расписание</button>
+      </div>
+    </form>
+  </div>

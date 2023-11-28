@@ -1,0 +1,7 @@
+@import "/src/styles.scss";
+@import "../patient-appointmentadd-page/patient-appointmentadd-page.component.scss";
+
+.page{
+    display: flex;
+    justify-content: space-around;
+}

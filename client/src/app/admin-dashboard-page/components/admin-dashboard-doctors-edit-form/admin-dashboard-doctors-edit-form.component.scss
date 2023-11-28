@@ -1,0 +1,67 @@
+@import "/src/styles.scss";
+.card {
+    background: #f7f7f7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto;
+    width: 300px;
+  }
+
+  .card-action{
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    margin-bottom: 20px;
+  }
+  
+  .input-field input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .input-field label {
+    color: #888;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  
+  /* Button styles */
+  .btn {
+    background-color: $text-color; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .btn:hover {
+    background-color: $hover-color;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn:disabled {
+    background-color: grey;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .red-text{
+    color:red
+  }
