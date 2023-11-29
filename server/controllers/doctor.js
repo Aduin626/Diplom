@@ -78,6 +78,7 @@ class Controller {
               s.start_time, 
               s.end_time, 
               a.problem_description,
+              p.patient_id,
               p.name AS patient_name,
               p.phone AS patient_phone
             FROM Schedule s

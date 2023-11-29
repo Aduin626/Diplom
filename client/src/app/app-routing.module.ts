@@ -15,6 +15,9 @@ import { AdminDashboardDoctorsEditFormComponent } from './admin-dashboard-page/c
 import { AdminDashboardSchedulesComponent } from './admin-dashboard-page/components/admin-dashboard-schedules/admin-dashboard-schedules.component';
 import { AdminDoctorSchedulesPageComponent } from './admin-doctor-schedules-page/admin-doctor-schedules-page.component';
 import { AdminDashboardDoctorsCreateScheduleFormComponent } from './admin-dashboard-page/components/admin-dashboard-doctors-create-schedule-form/admin-dashboard-doctors-create-schedule-form.component';
+import { DoctorDashboardPatientMedcardComponent } from './doctor-dashboard-page/components/doctor-dashboard-patient-medcard/doctor-dashboard-patient-medcard.component';
+import { DoctorPatientListPageComponent } from './doctor-patient-list-page/doctor-patient-list-page.component';
+import { DoctorDashboardCreateReceiptComponent } from './doctor-dashboard-page/components/doctor-dashboard-create-receipt/doctor-dashboard-create-receipt.component';
 
 const routes: Routes = [
   {
@@ -53,6 +56,24 @@ const routes: Routes = [
   {
     path: 'doctor-dashboard',
     component: DoctorDashboardPageComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [2] }, // Только для врачей
+  },
+  {
+    path: 'patient-medical-record/:id',
+    component: DoctorDashboardPatientMedcardComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [2] }, // Только для врачей
+  },
+  {
+    path: 'patient-list',
+    component: DoctorPatientListPageComponent,
+    canActivate: [AuthRoleGuard],
+    data: { roles: [2] }, // Только для врачей
+  },
+  {
+    path: 'create-receipt/:id',
+    component: DoctorDashboardCreateReceiptComponent,
     canActivate: [AuthRoleGuard],
     data: { roles: [2] }, // Только для врачей
   },

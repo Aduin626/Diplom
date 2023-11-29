@@ -1,0 +1,22 @@
+<div class="patients-container">
+  <h2>Список Пациентов</h2>
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    placeholder="Поиск по СНИЛСу"
+    class="search-input"
+  />
+
+  <ul class="patients-list">
+    <li *ngFor="let patient of filteredPatients" class="patient-item">
+      <div class="patient-details">
+        <p><strong>Имя:</strong> {{ patient.name }}</p>
+        <p><strong>СНИЛС:</strong> {{ patient.snils }}</p>
+        <p><strong>Телефон:</strong> {{ patient.phone }}</p>
+        <button (click)="openCreateReceiptForm(patient.patient_id)" class="btn">
+          Выписать рецепт
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -4,6 +4,7 @@ export interface User {
 }
 
 export interface Patient {
+  patient_id:number;
   email: string;
   password: string;
   lastName: string;
@@ -12,6 +13,7 @@ export interface Patient {
   phone: string;
   birthday: string;
   address: string;
+  name: string;
   snils: string;
 }
 
@@ -95,4 +97,40 @@ export interface ScheduleData {
   date: string;
   startTimes: string[];
   endTimes: string[];
+}
+
+export interface Medcard {
+  medcard_id: number;
+  patient_id: number;
+  patient_name: string;
+  history: string;
+  blood_type: string;
+  allergies: string;
+  chronic_diseases: string;
+  current_medications: string;
+  surgical_history: string;
+  family_history: string;
+  lifestyle: string;
+  diagnoses: string;
+  vaccinations: string;
+  contact_info: string;
+  created_at: string;
+  updated_at: string;
+}
+
+
+export interface ReceiptDoctor {
+  patient_id: number;
+  issue_date: string; // Дата выдачи рецепта
+  expiry_date: string; // Дата истечения срока действия рецепта
+  description: string; // Описание рецепта
+
+  items: PrescriptionItem[]; // Массив элементов рецепта
+}
+
+export interface PrescriptionItem {
+  item_id: number; // Идентификатор препарата
+  name: string; // Название препарата
+  quantity: number; // Количество выписанного лекарства
+  dosage: string; // Дозировка лекарства
 }

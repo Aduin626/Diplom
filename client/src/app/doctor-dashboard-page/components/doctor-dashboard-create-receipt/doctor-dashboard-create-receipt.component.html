@@ -1,0 +1,77 @@
+<div class="create-receipt-container">
+  <h2>Создание Рецепта</h2>
+
+  <form (ngSubmit)="submitReceipt()">
+    <input type="hidden" [(ngModel)]="receipt.patient_id" name="patient_id" />
+
+    <div class="form-group">
+      <label for="issue_date">Дата Выдачи</label>
+      <input
+        type="date"
+        id="issue_date"
+        [(ngModel)]="receipt.issue_date"
+        name="issue_date"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="expiry_date">Дата Истечения</label>
+      <input
+        type="date"
+        id="expiry_date"
+        [(ngModel)]="receipt.expiry_date"
+        name="expiry_date"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Описание</label>
+      <div>
+        <textarea
+          id="description"
+          [(ngModel)]="receipt.description"
+          name="description"
+          required
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- Выпадающий список для выбора медикамента -->
+    <div class="form-group">
+      <label for="selectedMedication">Выберите Медикамент</label>
+      <select [(ngModel)]="selectedMedication" name="selectedMedication">
+        <option value="">Выберите медикамент</option>
+        <option
+          *ngFor="let medication of availableMedications"
+          [value]="medication.item_id"
+        >
+          {{ medication.name }}
+        </option>
+      </select>
+      <button type="button" (click)="addItem()">Добавить Препарат</button>
+    </div>
+
+    <!-- Добавление информации о препаратах -->
+    <div *ngFor="let item of receipt.items; let i = index">
+      <div class="medication-item">
+        <p>{{ item.name }}</p>
+        <input
+          [(ngModel)]="item.quantity"
+          name="itemQuantity{{ i }}"
+          type="number"
+          placeholder="Количество"
+        />
+        <input
+          [(ngModel)]="item.dosage"
+          name="itemDosage{{ i }}"
+          placeholder="Дозировка"
+        />
+        <button type="button" (click)="removeItem(i)">Удалить</button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Создать Рецепт</button>
+  </form>
+</div>

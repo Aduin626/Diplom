@@ -1,0 +1,85 @@
+@import "/src/styles.scss";
+
+
+.create-receipt-container {
+    background: #f7f7f7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto;
+    width: 300px;
+  }
+  
+  /* Дополнительные стили для формы и элементов */
+  .create-receipt-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .create-receipt-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .create-receipt-container .form-group input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .create-receipt-container .form-group label {
+    color: #888;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  
+  /* Стили для кнопок */
+  .create-receipt-container .btn {
+    background-color: $text-color; /* Здесь используйте цвет вашей кнопки */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .create-receipt-container .btn:hover {
+    background-color: $hover-color; /* Здесь используйте цвет при наведении */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .create-receipt-container .btn:disabled {
+    background-color: grey;
+    cursor: default;
+    box-shadow: none;
+  }
+  
+  /* Красный текст для ошибок */
+  .create-receipt-container .red-text {
+    color: red;
+  }
+  
+  /* Стили для элементов медикаментов */
+  .create-receipt-container .medication-item {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff; /* Задайте цвет фона по вашему выбору */
+  }
+  
+  .create-receipt-container .medication-item p {
+    font-weight: bold;
+  }
+  
+  .create-receipt-container .medication-item input[type="number"] {
+    width: 100px; /* Ширина поля для количества */
+    margin-right: 10px;
+  }

@@ -1,0 +1,22 @@
+
+
+<div *ngIf="medcard" class="medcard-container">
+    <h2>Медицинская карта пациента: {{ medcard.patient_name }}</h2>
+    <div class="medcard-details">
+
+    <p><strong>История болезни:</strong> {{ medcard.history }}</p>
+    <p><strong>Тип крови:</strong> {{ medcard.blood_type }}</p>
+    <p><strong>Аллергии:</strong> {{ medcard.allergies }}</p>
+    <p><strong>Хронические заболевания:</strong> {{ medcard.chronic_diseases }}</p>
+    <p><strong>Текущие лекарства:</strong> {{ medcard.current_medications }}</p>
+    <p><strong>Хирургическая история:</strong> {{ medcard.surgical_history }}</p>
+    <p><strong>Семейная история:</strong> {{ medcard.family_history }}</p>
+    <p><strong>Образ жизни:</strong> {{ medcard.lifestyle }}</p>
+    <p><strong>Диагнозы:</strong> {{ medcard.diagnoses }}</p>
+    <p><strong>Вакцинации:</strong> {{ medcard.vaccinations }}</p>
+    <p><strong>Контактная информация:</strong> {{ medcard.contact_info }}</p>
+    <p><strong>Дата создания:</strong> {{ medcard.created_at | date: 'medium' }}</p>
+    <p><strong>Дата последнего обновления:</strong> {{ medcard.updated_at | date: 'medium' }}</p>
+  </div>
+
+  </div>

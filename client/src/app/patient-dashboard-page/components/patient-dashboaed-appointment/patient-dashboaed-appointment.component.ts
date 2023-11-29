@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/shared/interfaces';
 import { PatientService } from 'src/app/shared/services/patient.service';
+declare var createGoogleEvent:any;
 
 @Component({
   selector: 'app-patient-dashboaed-appointment',
@@ -8,6 +9,14 @@ import { PatientService } from 'src/app/shared/services/patient.service';
   styleUrls: ['./patient-dashboaed-appointment.component.scss']
 })
 export class PatientDashboaedAppointmentComponent implements OnInit{
+  addNotif(appointment: Appointment) {
+    if (typeof createGoogleEvent === 'function') {
+      console.log(appointment)
+      createGoogleEvent(appointment);
+    } else {
+      console.error(typeof createGoogleEvent);
+    }
+  }
 
   appointments: Appointment[] = [];
 
@@ -48,3 +57,5 @@ export class PatientDashboaedAppointmentComponent implements OnInit{
     }
   }
 }
+
+
