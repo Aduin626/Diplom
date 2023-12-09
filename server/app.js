@@ -8,6 +8,7 @@ import fs from "fs";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { jwtTokens } from "./utils/jwt.helpers.js";
+import multer from 'multer';
 
 import authRouter from "./routes/auth.js";
 import patientRouter from "./routes/patient.js";
@@ -43,6 +44,14 @@ app.use("/api/auth", authRouter);
 app.use("/api/patient", patientRouter);
 app.use("/api/doctor", doctorRouter);
 app.use("/api/admin", adminRouter);
+app.use((error, req, res, next) => {
+  if (error instanceof multer.MulterError) {
+    
+    res.status(400).send({ message: error.message });
+  } else {
+    next(error);
+  }
+});
 
 io.use((socket, next) => {
   const token = socket.handshake.query?.token;

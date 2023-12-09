@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 })
 export class AdminDashboardDoctorsCreateFormComponent {
   form!: FormGroup;
+  selectedFile: File | null = null;
 
   constructor(private adminService: AdminService) {}
 
@@ -36,6 +37,29 @@ export class AdminDashboardDoctorsCreateFormComponent {
       error => {
         console.error(error);
         this.form.enable();
+      }
+    );
+  }
+
+  onFileSelected(event: Event): void {
+    const element = event.currentTarget as HTMLInputElement;
+    this.selectedFile = element.files ? element.files[0] : null;
+  }
+
+  uploadFile(): void {
+    if (!this.selectedFile) {
+      alert('Пожалуйста, выберите файл.');
+      return;
+    }
+
+    this.adminService.uploadDoctorsExcel(this.selectedFile).subscribe(
+      response => {
+        console.log('Excel файл успешно загружен', response);
+        this.form.reset();
+        // Можно добавить дополнительные действия после успешной загрузки
+      },
+      error => {
+        console.error('Ошибка при загрузке Excel файла', error);
       }
     );
   }

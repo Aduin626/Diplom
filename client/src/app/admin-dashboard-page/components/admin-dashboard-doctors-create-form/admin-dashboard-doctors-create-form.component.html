@@ -67,3 +67,9 @@
       <button class="btn" [disabled]="form.invalid">Добавить</button>
     </div>
   </form>
+
+
+  <div class="file-upload">
+    <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls" />
+    <button (click)="uploadFile()" [disabled]="!selectedFile">Загрузить Excel</button>
+  </div>

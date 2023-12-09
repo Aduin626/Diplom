@@ -75,4 +75,13 @@ export class AdminService {
       headers: this.getHeaders(),
     });
   }
+
+  uploadDoctorsExcel(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    
+    return this.http.post('/api/admin/upload-doctors-excel', formData, {
+      headers: this.getHeaders(),
+    });
+  }
 }
