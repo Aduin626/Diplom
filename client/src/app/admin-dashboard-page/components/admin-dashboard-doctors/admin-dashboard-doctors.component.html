@@ -4,7 +4,6 @@
     <li *ngFor="let doctor of doctors">
       <p><strong>Имя:</strong> {{ doctor.name }}</p>
       <p><strong>Специальность:</strong> {{ doctor.specialty }}</p>
-      <!-- <button (click)="scheduleDoctor(doctor.doctor_id)">Составить расписание</button> -->
       <div class="btn-box">
         <button (click)="deleteDoctor(doctor.doctor_id.toString())">
           Удалить

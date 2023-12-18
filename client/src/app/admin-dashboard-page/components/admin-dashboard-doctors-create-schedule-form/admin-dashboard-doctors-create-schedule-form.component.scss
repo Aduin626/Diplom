@@ -6,6 +6,7 @@
     padding: 20px;
     margin: auto;
     width: 300px;
+    position: relative;
   }
 
   .card-action{
@@ -66,3 +67,13 @@
   .red-text{
     color:red
   }
+
+
+  
+.brand-logo {
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

@@ -11,14 +11,6 @@ CREATE TABLE Users (
     password_hash VARCHAR(255) NOT NULL -- Пароль в хешированном виде
 );
 
--- Создание таблицы сессий для управления активными сессиями пользователей
-CREATE TABLE Sessions (
-    session_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES Users(user_id),
-    session_token UUID NOT NULL UNIQUE,
-    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    last_activity TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
-);
 
 -- Создание таблицы администраторов
 CREATE TABLE Admins (
@@ -66,13 +58,6 @@ CREATE TABLE Schedule (
     is_booked BOOLEAN DEFAULT FALSE
 );
 
--- Создание таблицы документов
-CREATE TABLE Documents (
-    document_id SERIAL PRIMARY KEY,
-    type VARCHAR(50) NOT NULL,
-    issue_date DATE NOT NULL,
-    admin_id INTEGER NOT NULL REFERENCES Admins(admin_id)
-);
 
 -- Создание таблицы медицинских карт
 CREATE TABLE Medcards (
@@ -92,21 +77,8 @@ CREATE TABLE Medcards (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
--- Создание таблицы уведомлений склада
-CREATE TABLE Notif_warehouse (
-    notif_id SERIAL PRIMARY KEY,
-    admin_id INTEGER NOT NULL REFERENCES Admins(admin_id),
-    text TEXT NOT NULL,
-    date TIMESTAMP WITHOUT TIME ZONE NOT NULL
-);
 
--- Создание таблицы уведомлений
-CREATE TABLE Messages (
-    message_id SERIAL PRIMARY KEY,
-    chat_id
-    text TEXT NOT NULL,
-    date TIMESTAMP WITHOUT TIME ZONE NOT NULL
-);
+
 
 -- Создание таблицы для склада
 CREATE TABLE Warehouse (
@@ -135,28 +107,5 @@ CREATE TABLE PrescriptionWarehouseItems (
     dosage TEXT
 );
 
-CREATE TABLE Warehouse(
-    item_id INTEGER PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    serial VARCHAR(50) NOT NULL,
-    qr TEXT NOT NULL
-);
-
--- Chat (
---     chat_id SERIAL PRIMARY KEY,
---     name
 
 
--- )
--- chat_member(
---     chat_id
---     user_id
--- )
-
-CREATE TABLE friends (
-    user_id INTEGER NOT NULL,
-    friend_id INTEGER NOT NULL,
-    PRIMARY KEY (user_id, friend_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
-);

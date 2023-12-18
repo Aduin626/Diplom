@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'patient-dashboard',
     component: PatientDashboardPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [1] },
+    data: { roles: [1] },// Только для пациента
   },
 
   {
@@ -63,13 +63,13 @@ const routes: Routes = [
     path: 'patient-medical-record/:id',
     component: DoctorDashboardPatientMedcardComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [2] }, // Только для врачей
+    data: { roles: [2] }, 
   },
   {
     path: 'patient-list',
     component: DoctorPatientListPageComponent,
     canActivate: [AuthRoleGuard],
-    data: { roles: [2] }, // Только для врачей
+    data: { roles: [2] }, 
   },
   {
     path: 'create-receipt/:id',

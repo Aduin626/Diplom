@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/services/admin.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 export class AdminDashboardDoctorsEditFormComponent {
   editForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private adminService: AdminService) {
+  constructor(private fb: FormBuilder, private adminService: AdminService, private router:Router) {
     this.editForm = this.fb.group({
       doctor_id: [''],
       firstName: ['', Validators.required],
@@ -43,6 +44,8 @@ export class AdminDashboardDoctorsEditFormComponent {
       this.adminService.updateDoctor(this.editForm.value).subscribe({
         next: (response) => {
           console.log('Данные врача обновлены', response);
+          this.router.navigate(['/admin-dashboard']);
+
         },
         error: (error) => {
           console.error('Ошибка при обновлении данных врача', error);

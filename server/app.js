@@ -8,7 +8,7 @@ import fs from "fs";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { jwtTokens } from "./utils/jwt.helpers.js";
-import multer from 'multer';
+import multer from "multer";
 
 import authRouter from "./routes/auth.js";
 import patientRouter from "./routes/patient.js";
@@ -35,6 +35,7 @@ fs.writeFileSync(
 );
 
 app.use(morgan("dev"));
+app.use(express.static("client"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -46,7 +47,6 @@ app.use("/api/doctor", doctorRouter);
 app.use("/api/admin", adminRouter);
 app.use((error, req, res, next) => {
   if (error instanceof multer.MulterError) {
-    
     res.status(400).send({ message: error.message });
   } else {
     next(error);
@@ -69,6 +69,5 @@ io.use((socket, next) => {
   }
 }).on("connection", (socket) => {
   console.log("a user connected");
-  // Здесь вы можете использовать socket.decoded для получения информации о пользователе
 });
 export default app;

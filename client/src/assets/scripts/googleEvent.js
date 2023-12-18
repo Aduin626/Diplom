@@ -15,19 +15,19 @@ function gapiLoaded() {
 }
 
 // Функция для инициализации Google API
- function initializeGapiClient() {
+function initializeGapiClient() {
   try {
     console.log("Google API нач инициализировано");
 
-     gapi.client.init({
+    gapi.client.init({
       apiKey: API_KEY,
       discoveryDocs: [DISCOVERY_DOC],
     });
     console.log("Google API инициализировано");
     gapiInited = true;
-    gapi.client.load('calendar', 'v3', () => {
-        console.log('Google Calendar API loaded');
-      });
+    gapi.client.load("calendar", "v3", () => {
+      console.log("Google Calendar API loaded");
+    });
     gisLoaded(); // Перемещаем вызов gisLoaded сюда
   } catch (error) {
     console.error("Ошибка при инициализации Google API:", error);
@@ -79,7 +79,8 @@ function createGoogleEvent(appointment) {
 
 async function addNotif(appointment) {
   const event = {
-    summary: "Прием у врача: " + appointment.specialty,
+    summary:
+      "Завтра у вас прием у врача: " + appointment.specialty + " в тоже время",
     description: appointment.problem_description,
     start: {
       dateTime: getGoogleCalendarDateTime(
@@ -103,7 +104,7 @@ async function addNotif(appointment) {
       resource: event,
     })
     .then((response) => {
-      console.info("Event created: " + response.result.htmlLink);
+      confirm("Запись добавлена" + response.result.htmlLink);
     });
 }
 

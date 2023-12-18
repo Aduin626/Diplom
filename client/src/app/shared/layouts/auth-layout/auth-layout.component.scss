@@ -1,15 +1,20 @@
 @import "/src/styles.scss";
-
-
-//nav bar style
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+/* Navbar style */
 .nav-wrapper {
-  background-color: $background-color;
+  background-color: $text-color; /* Google Blue color, you can change it */
   display: flex;
   justify-content: space-between;
+  padding: 10px; /* Add padding for better spacing */
 
   .brand-logo {
-    font-size: $logo-font-size;
-    color: $text-color;
+    font-size: 2rem;
+    color: #fff; /* White text color */
     text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
@@ -21,18 +26,165 @@
       margin-left: 20px;
 
       a {
-        color: $text-color;
+        color: #fff; /* White text color */
         font-weight: normal;
-        font-size: $link-font-size;
+        font-size: 1rem;
         text-transform: uppercase;
         text-decoration: none;
 
         &:hover {
-          color: $hover-color;
+          color: #e0e0e0; /* Light gray on hover */
         }
       }
     }
   }
 }
 
+.auth-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
 
+.auth-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.landing-container {
+  text-align: center;
+  padding: 50px;
+  align-items: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #fff; /* Белый фон */
+  border-radius: 10px; /* Закругленные углы */
+  box-shadow: 0px 0px 20px 0px #ccc; /* Тень */
+  margin: 20px;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $text-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  button {
+    background-color: $text-color;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
+
+  button[type="submit"]:hover {
+    background-color: $hover-color;
+  }
+}
+
+.clinic-image {
+  width: 100%;
+
+  max-width: 600px;
+  border-radius: 10px;
+  margin: 20px 0;
+  background-image: url("http://klublady.ru/uploads/posts/2022-07/thumbs/1658582446_18-klublady-ru-p-posokh-asklepiya-tatu-eskiz-foto-18.jpg");
+  box-shadow: 0px 0px 10px 0px #ccc; /* Тень */
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.service {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.service h2 {
+  font-size: 1.8rem;
+  color: $text-color;
+  margin-bottom: 10px;
+}
+
+.service p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.footer {
+  background-color: $background-color;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #f8f8f8;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 12px;
+}
+
+/* Additional Decoration */
+h3 {
+  color: $text-color;
+  border-bottom: 2px solid $text-color;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.contact-info,
+.social-media {
+  flex: 1;
+  text-align: left;
+}
+
+.social-media {
+  text-align: right;
+}
+
+/* Icon Styles */
+.footer-info i {
+  margin-right: 5px;
+}
+
+.footer-info p {
+  margin: 8px 0;
+}
+
+/* Decorative Lines */
+.decorative-line {
+  height: 2px;
+  width: 100%;
+  background-color: #555; /* Серый цвет линии */
+  margin: 10px 0;
+}
+
+/* Box Shadow */
+.footer {
+  box-shadow: 0px 0px 10px 0px #444; /* Тень */
+}

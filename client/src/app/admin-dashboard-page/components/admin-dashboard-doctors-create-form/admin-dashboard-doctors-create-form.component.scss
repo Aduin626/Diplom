@@ -1,1 +1,89 @@
-@import "../../../login-page/login-page.component.scss";
+@import "/src/styles.scss";
+
+.card {
+  background: #f7f7f7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: auto;
+  width: 300px;
+}
+
+.card-action {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-field label {
+  color: #888;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* Button styles */
+.btn {
+  background-color: $text-color; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: $hover-color;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+  background-color: grey;
+  cursor: default;
+  box-shadow: none;
+}
+
+.red-text {
+  color: red;
+}
+
+.file-upload button {
+  background-color: $text-color; /* Цвет фона кнопки (зеленый) */
+  color: white; /* Цвет текста кнопки (белый) */
+  padding: 10px 20px; /* Внутренние отступы кнопки */
+  border: none; /* Убираем границу кнопки */
+  border-radius: 4px; /* Закругляем углы кнопки */
+  cursor: pointer; /* Заменяем курсор при наведении на кнопку */
+  transition-duration: 0.4s; /* Длительность анимации при наведении */
+}
+
+.file-upload button:hover {
+  background-color: $hover-color; /* Изменяем цвет фона при наведении (темно-зеленый) */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Добавляем тень при наведении */
+}
+
+.file-upload button:disabled {
+  background-color: grey; /* Цвет фона для отключенной кнопки (серый) */
+  cursor: default; /* Заменяем курсор для отключенной кнопки */
+  box-shadow: none; /* Убираем тень для отключенной кнопки */
+}

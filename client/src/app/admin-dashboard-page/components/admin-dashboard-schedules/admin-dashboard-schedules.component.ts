@@ -48,16 +48,12 @@ export class AdminDashboardSchedulesComponent {
   }
 
   deleteSchedule(scheduleId: number) {
-    // Отправка запроса на удаление
     this.adminService.deleteSchedule(scheduleId).subscribe({
       next: (response) => {
-        // Обработка успешного удаления
         console.log('Талон успешно удален', response);
-        // Обновление списка талонов
         this.loadSchedules();
       },
       error: (error) => {
-        // Обработка ошибок удаления
         console.error('Ошибка при удалении талона', error);
       }
     });

@@ -3,7 +3,7 @@ function checkAdminRole(req, res, next) {
     if (roleId !== 3) {
       return res.status(403).json({ error: "Вы не администратор!" });
     }
-    next(); // Пользователь является администратором, продолжаем выполнение
+    next(); 
   }
 
   export { checkAdminRole };

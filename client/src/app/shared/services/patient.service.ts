@@ -59,16 +59,8 @@ export class PatientService {
     });
   }
 
-  // updateAppointment(
-  //   appointmentId: string,
-  //   appointmentData:AppointmentCreationRequest
-  // ): Observable<any> {
-  //   return this.http.put(
-  //     `/api/patient/appointments/${appointmentId}`,
-  //     appointmentData,
-  //     { headers: this.getHeaders() }
-  //   );
-  // }
+
+
 
   getReceipts(): Observable<{ receipts: Receipt[] }> {
     return this.http.get<{ receipts: Receipt[] }>('/api/patient/receipts', {
@@ -76,14 +68,5 @@ export class PatientService {
     });
   }
 
-  // updateDoctor(doctorData: any): Observable<any> {
-  //   const doctorId = doctorData.doctor_id;
-  //   return this.http.put<any>(/api/doctors/${doctorId}, doctorData);
-  // }
 
-  // deleteReceipt(receiptId: string): Observable<any> {
-  //   return this.http.delete(`/api/patient/receipts/${receiptId}`, {
-  //     headers: this.getHeaders(),
-  //   });
-  // }
 }

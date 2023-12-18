@@ -1,14 +1,75 @@
 <nav>
-    <div class="nav-wrapper grey darken-1">
-        <a routerLink="/" class="brand-logo">Aegle</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li routerLinkActive="active"
-            ><a routerLink="/login">Вход</a></li>
-            <li routerLinkActive="active"><a routerLink="/register">Регистрация</a></li>
-        </ul>
-    </div>
+  <div class="nav-wrapper grey darken-1">
+    <a routerLink="/" class="brand-logo">Aegle</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li routerLinkActive="active"><a routerLink="/login">Вход</a></li>
+      <li routerLinkActive="active">
+        <a routerLink="/register">Регистрация</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <div class="auth-block">
-<router-outlet></router-outlet>
+  <div class="landing-container">
+    <h1>Welcome to Aegle Polyclinic</h1>
+    <p>Ваш надежный партнер в сфере здравоохранения</p>
+    <img
+      class="clinic-image"
+      src="http://klublady.ru/uploads/posts/2022-07/thumbs/1658582446_18-klublady-ru-p-posokh-asklepiya-tatu-eskiz-foto-18.jpg"
+      alt="Clinic Image"
+    />
+    <p>
+      Мы предлагаем широкий спектр медицинских услуг для обеспечения вашего
+      благополучия. Наша команда опытных врачей и персонала стремится
+      предоставить высококачественную помощь в комфортных условиях.
+    </p>
+    <div class="services-container">
+      <div class="service">
+        <h2>Общая медицина</h2>
+        <p>
+          Комплексная медицинская помощь для взрослых и детей, включая
+          профилактические услуги, регулярные обследования и лечение общих
+          заболеваний.
+        </p>
+      </div>
+      <div class="service">
+        <h2>Специализированные клиники</h2>
+        <p>
+          Специализированные клиники по различным медицинским состояниям, где
+          работают эксперты в соответствующих областях для оказания
+          целенаправленной помощи и лечения.
+        </p>
+      </div>
+      <div class="service">
+        <h2>Диагностические услуги</h2>
+        <p>
+          Современные диагностические услуги, включая лабораторные анализы,
+          изображение и передовые диагностические процедуры для точного и
+          своевременного выявления заболеваний.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="decorative-line"></div>
+    <div class="footer-info">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i>Email: info@aegleclinic.com</p>
+        <p><i class="fas fa-phone"></i>Phone: +1 123-456-7890</p>
+      </div>
+      <div class="social-media">
+        <h3>Follow Us</h3>
+        <p>
+          <i class="fab fa-facebook"></i>Facebook |
+          <i class="fab fa-twitter"></i>Twitter |
+          <i class="fab fa-instagram"></i>Instagram
+        </p>
+      </div>
+    </div>
+    <div class="decorative-line"></div>
+    <p>&copy; 2023 Aegle Polyclinic. All rights reserved.</p>
+    <p>Designed with ❤️ by Aegle Team</p>
+  </div>
+  <router-outlet></router-outlet>
 </div>
-

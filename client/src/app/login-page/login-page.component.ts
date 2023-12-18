@@ -14,6 +14,7 @@ import { MyTokenPayload } from '../shared/interfaces';
 export class LoginPageComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   aSub!: Subscription;
+  registrationError: string | null = null; // Variable to hold registration error message
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {}
 
@@ -31,9 +32,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']) {
-        // Теперь вы можете зайти в систему используя свои данные
       } else if (params['accessDenied']) {
-        // Для начала авторизуйтесь в системе
       }
     });
   }
@@ -65,7 +64,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         }
       },
       (error) => {
-        console.warn(error);
+        console.log(error.error.error);
+        if (error && error.error && error.error.error) {
+          this.registrationError = error.error.error; 
+        } else {
+          this.registrationError = 'An error occurred during registration.';
+        }
         this.form.enable();
       }
     );

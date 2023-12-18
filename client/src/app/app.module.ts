@@ -36,6 +36,8 @@ import { DoctorDashboardPatientMedcardComponent } from './doctor-dashboard-page/
 import { DoctorPatientListPageComponent } from './doctor-patient-list-page/doctor-patient-list-page.component';
 import { DoctorDashboardPatientListComponent } from './doctor-dashboard-page/components/doctor-dashboard-patient-list/doctor-dashboard-patient-list.component';
 import { DoctorDashboardCreateReceiptComponent } from './doctor-dashboard-page/components/doctor-dashboard-create-receipt/doctor-dashboard-create-receipt.component';
+import { ConfirmDialogComponent } from './shared/modal/confim-logout/confim-logout.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -67,13 +69,15 @@ import { DoctorDashboardCreateReceiptComponent } from './doctor-dashboard-page/c
     DoctorDashboardPatientMedcardComponent,
     DoctorPatientListPageComponent,
     DoctorDashboardPatientListComponent,
-    DoctorDashboardCreateReceiptComponent
+    DoctorDashboardCreateReceiptComponent,
+    ConfirmDialogComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule

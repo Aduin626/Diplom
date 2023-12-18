@@ -32,8 +32,8 @@ export class PatientDashboaedAppointmentComponent implements OnInit{
   loadAppointments(): void {
     this.patientService.getAppointments().subscribe(
 
-      responce => { // Убедитесь, что тип данных - массив записей
-        this.appointments = responce.appointments; // Присваивание должно быть массивом
+      responce => { 
+        this.appointments = responce.appointments; 
         console.log(this.appointments);
       },
       error => {

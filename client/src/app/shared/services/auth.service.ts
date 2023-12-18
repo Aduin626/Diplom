@@ -3,12 +3,19 @@ import { Patient, User } from '../interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ConfirmDialogComponent } from '../modal/confim-logout/confim-logout.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private token: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   register(patient: Patient): Observable<Patient> {
     return this.http.post<Patient>('/api/auth/register', patient);
@@ -35,7 +42,25 @@ export class AuthService {
     return !!this.token;
   }
   logout(): void {
-    this.setToken(null);
-    localStorage.clear();
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.setToken(null);
+        localStorage.clear();
+      }
+    });
+  }
+
+  openLogoutConfirmationDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.setToken(null);
+        localStorage.clear();
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

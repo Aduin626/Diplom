@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Receipt, ReceiptDoctor } from 'src/app/shared/interfaces';
 import { DoctorService } from 'src/app/shared/services/doctor.service';
@@ -9,7 +10,7 @@ import { DoctorService } from 'src/app/shared/services/doctor.service';
   styleUrls: ['./doctor-dashboard-create-receipt.component.scss']
 })
 export class DoctorDashboardCreateReceiptComponent {
-  patientId: number | undefined; // Здесь сохраняем ID выбранного пациента
+  patientId: number | undefined; 
   selectedMedication: string = '';
   receipt: ReceiptDoctor = {
     patient_id: 0,
@@ -20,6 +21,7 @@ export class DoctorDashboardCreateReceiptComponent {
  
   };
   availableMedications: any[] = [];
+  form!: FormGroup;
 
   constructor(private doctorService: DoctorService,  private route: ActivatedRoute) {}
 
@@ -56,8 +58,10 @@ export class DoctorDashboardCreateReceiptComponent {
   submitReceipt(): void {
     this.doctorService.createReceipt(this.receipt).subscribe({
       
-      next: response => console.log('Рецепт успешно создан', response),
-      error: error => console.error('Ошибка при создании рецепта', error)
+      next: response => {alert('Рецепт успешно создан');
+      this.form.reset();    },
+      error: error => alert('Ошибка при создании рецепта')
+      
     });
     console.log(this.receipt)
   }

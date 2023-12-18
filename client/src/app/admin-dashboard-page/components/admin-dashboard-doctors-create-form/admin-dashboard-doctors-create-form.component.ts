@@ -32,10 +32,12 @@ export class AdminDashboardDoctorsCreateFormComponent {
     this.form.disable();
     this.adminService.addDoctor(this.form.value).subscribe(
       () => {
-        console.log('Doctor added successfully');
+        alert('Doctor added successfully');
+        this.form.reset();
+
       },
       error => {
-        console.error(error);
+        alert(error);
         this.form.enable();
       }
     );
@@ -54,12 +56,11 @@ export class AdminDashboardDoctorsCreateFormComponent {
 
     this.adminService.uploadDoctorsExcel(this.selectedFile).subscribe(
       response => {
-        console.log('Excel файл успешно загружен', response);
+        alert('Excel файл успешно загружен');
         this.form.reset();
-        // Можно добавить дополнительные действия после успешной загрузки
       },
       error => {
-        console.error('Ошибка при загрузке Excel файла', error);
+        alert('Ошибка при загрузке Excel файла');
       }
     );
   }
